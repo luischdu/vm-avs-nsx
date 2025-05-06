@@ -13,7 +13,7 @@ resource "nsxt_policy_dhcp_server" "DHCP-server" {
 #
 resource "nsxt_policy_tier1_gateway" "T1GW" {
   display_name      = var.t1_gateway.display_name
-  dhcp_config_path  = nsxt_policy_dhcp_server.LUP-OCT22-DHCP.path
+  dhcp_config_path  = nsxt_policy_dhcp_server.DHCP-server.path
   tier0_path        = data.nsxt_policy_tier0_gateway.t0_gateway.path
   edge_cluster_path = data.nsxt_policy_edge_cluster.edge_cluster.path
   failover_mode     = "NON_PREEMPTIVE"
@@ -35,7 +35,7 @@ resource "nsxt_policy_tier1_gateway" "T1GW" {
 resource "nsxt_policy_segment" "Workload-SEG" {
   description         = var.lup_oct22_segment.description
   display_name        = var.lup_oct22_segment.display_name
-  connectivity_path   = nsxt_policy_tier1_gateway.LUP-OCT22-T1GW.path
+  connectivity_path   = nsxt_policy_tier1_gateway.T1GW.path
   transport_zone_path = data.nsxt_policy_transport_zone.overlay_tz.path
 
   subnet {
