@@ -1,17 +1,17 @@
 #
 # DHCP Profile for VMs
 # 
-resource "nsxt_policy_dhcp_server" "LUP-OCT22-DHCP" {
+resource "nsxt_policy_dhcp_server" "DHCP-server" {
   display_name     = var.dhcp_profile.description
   description      = var.dhcp_profile.display_name
-  server_addresses = ["${var.dhcp_profile.server_addresses}"]
+  server_addresses = [var.dhcp_profile.server_address]
 }
 
 
 #
 # Create T1 Gateway
 #
-resource "nsxt_policy_tier1_gateway" "LUP-OCT22-T1GW" {
+resource "nsxt_policy_tier1_gateway" "T1GW" {
   display_name      = var.t1_gateway.display_name
   dhcp_config_path  = nsxt_policy_dhcp_server.LUP-OCT22-DHCP.path
   tier0_path        = data.nsxt_policy_tier0_gateway.t0_gateway.path
@@ -32,7 +32,7 @@ resource "nsxt_policy_tier1_gateway" "LUP-OCT22-T1GW" {
 # Create a workload segment or logical switch
 # VMs can be attached to this CIDR
 #
-resource "nsxt_policy_segment" "LUP-OCT22-SEG" {
+resource "nsxt_policy_segment" "Workload-SEG" {
   description         = var.lup_oct22_segment.description
   display_name        = var.lup_oct22_segment.display_name
   connectivity_path   = nsxt_policy_tier1_gateway.LUP-OCT22-T1GW.path

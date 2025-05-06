@@ -3,13 +3,14 @@
 ##
 
 resource "vsphere_folder" "folder" {
-  path          = "Workloads"
+  path          = "PRD"
   type          = "vm"
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 
 resource "vsphere_virtual_machine" "testvm01" {
-  name                 = var.vm-name
+  for_each             = { for vm in var.vm_list : vm.name => vm }
+  name                 = each.value.name
   folder               = trimprefix(vsphere_folder.folder.path, "/${data.vsphere_datacenter.datacenter.name}/vm")
   datacenter_id        = data.vsphere_datacenter.datacenter.id
   datastore_id         = data.vsphere_datastore.datastore.id
@@ -36,6 +37,13 @@ resource "vsphere_virtual_machine" "testvm01" {
     ovf_network_map           = data.vsphere_ovf_vm_template.photon_ovf.ovf_network_map
     ip_protocol               = "IPV4"
     ip_allocation_policy      = "STATIC_MANUAL"
+  }
+
+  vapp {
+    properties = {
+      "hostname" = each.value.hostname
+      "ip0"      = each.value.ip
+    }
   }
 
   lifecycle {

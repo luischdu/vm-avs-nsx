@@ -14,7 +14,7 @@ variable "vsphere_password" {
 
 variable "vm-name" {
   type    = string
-  default = "levelup-vm"
+  default = "testvm"
 }
 
 variable "datastore" {

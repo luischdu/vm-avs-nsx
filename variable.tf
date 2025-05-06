@@ -62,3 +62,10 @@ variable "network" {
   type = string
 }
 
+variable "vm_list" {
+  type = list(object({
+    name     = string
+    ip       = string
+    hostname = string
+  }))
+}
