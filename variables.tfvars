@@ -61,7 +61,7 @@ host               = "esx07-r07.p07.44cd5ffd74b0456b957a69.eastus.avs.azure.com"
 network            = "SG-AZ1"
 
 vm_list = [
-  { name = "vm01", ip = "192.168.1.5", hostname = "host01" },
-  { name = "vm02", ip = "192.168.1.6", hostname = "host02" },
-  { name = "vm15", ip = "192.168.1.19", hostname = "host15" },
+  { name = "sofia-restrepo", ip = "192.168.1.7", hostname = "SBOGRES" },
+  { name = "sofia-amazonas", ip = "192.168.1.8", hostname = "SAMZLET" },
+  { name = "sofia-medellin", ip = "192.168.1.9", hostname = "SANTMED" },
 ]
