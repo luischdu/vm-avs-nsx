@@ -33,24 +33,24 @@ resource "nsxt_policy_tier1_gateway" "T1GW" {
 # VMs can be attached to this CIDR
 #
 resource "nsxt_policy_segment" "Workload-SEG" {
-  description         = var.lup_oct22_segment.description
-  display_name        = var.lup_oct22_segment.display_name
+  description         = var.def_sof_segment.description
+  display_name        = var.def_sof_segment.display_name
   connectivity_path   = nsxt_policy_tier1_gateway.T1GW.path
   transport_zone_path = data.nsxt_policy_transport_zone.overlay_tz.path
 
   subnet {
-    cidr        = var.lup_oct22_segment.subnet.cidr
-    dhcp_ranges = var.lup_oct22_segment.subnet.dhcp_ranges
+    cidr        = var.def_sof_segment.subnet.cidr
+    dhcp_ranges = var.def_sof_segment.subnet.dhcp_ranges
 
     dhcp_v4_config {
-      server_address = var.lup_oct22_segment.subnet.dhcp_v4_config.server_address
-      lease_time     = var.lup_oct22_segment.subnet.dhcp_v4_config.lease_time
-      dns_servers    = var.lup_oct22_segment.subnet.dhcp_v4_config.dns_servers
+      server_address = var.def_sof_segment.subnet.dhcp_v4_config.server_address
+      lease_time     = var.def_sof_segment.subnet.dhcp_v4_config.lease_time
+      dns_servers    = var.def_sof_segment.subnet.dhcp_v4_config.dns_servers
     }
   }
   tag {
-    scope = var.lup_oct22_segment.tag.scope
-    tag   = var.lup_oct22_segment.tag.tag
+    scope = var.def_sof_segment.tag.scope
+    tag   = var.def_sof_segment.tag.tag
   }
 }
 

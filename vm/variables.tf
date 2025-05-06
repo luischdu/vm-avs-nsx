@@ -34,3 +34,11 @@ variable "network" {
   type = string
 }
 
+variable "vm_list" {
+  description = "Lista de VMs con su IP y hostname"
+  type = list(object({
+    name     = string
+    ip       = string
+    hostname = string
+  }))
+}

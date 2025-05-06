@@ -9,7 +9,7 @@ module "network" {
   t0_gateway        = var.t0_gateway
   t1_gateway        = var.t1_gateway
   edge_cluster      = var.edge_cluster
-  lup_oct22_segment = var.lup_oct22_segment
+  def_sof_segment = var.def_sof_segment
 }
 
 resource "time_sleep" "wait_90_seconds" {
@@ -19,6 +19,7 @@ resource "time_sleep" "wait_90_seconds" {
 
 module "vm" {
   source             = "./vm"
+  vm_list = var.vm_list
   vsphere_datacenter = var.vsphere_datacenter
   vsphere_server     = var.vsphere_server
   vsphere_user       = var.vsphere_user

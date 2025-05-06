@@ -23,7 +23,7 @@ variable "overlay_tz" {}
 variable "edge_cluster" {}
 variable "t0_gateway" {}
 variable "t1_gateway" {}
-variable "lup_oct22_segment" {}
+variable "def_sof_segment" {}
 
 # VM Variables
 variable "vsphere_datacenter" {

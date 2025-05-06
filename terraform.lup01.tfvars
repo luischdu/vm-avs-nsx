@@ -22,7 +22,7 @@ t1_gateway = {
 edge_cluster = {
   display_name = "TNT39-CLSTR"
 }
-lup_oct22_segment = {
+def_sof_segment = {
   description  = "LUP NOV22 Segment"
   display_name = "LUP-NOV22-SEG"
   subnet = {
@@ -35,8 +35,8 @@ lup_oct22_segment = {
     }
   }
   tag = {
-    scope = "LevelUp"
-    tag   = "NOV22"
+    scope = "Sofia"
+    tag   = "AVS"
   }
 }
 

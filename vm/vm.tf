@@ -42,7 +42,7 @@ resource "vsphere_virtual_machine" "testvm01" {
   vapp {
     properties = {
       "hostname" = each.value.hostname
-      "ip0"      = each.value.ip
+      # "ip0"      = each.value.ip
     }
   }
 
